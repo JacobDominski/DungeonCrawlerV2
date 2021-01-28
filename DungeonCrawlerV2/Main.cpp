@@ -10,25 +10,71 @@
 
 void ClearScreen();
 void Instructions();
+void Input();
 
 int main() {
 	Level level;
 
-	std::string choice = "";
+	char player = 'P';
 	bool GameRunning = true;
 	std::vector<std::vector<char>> CurrentLevel = level.level1;
+	
 
+	level.Start(&CurrentLevel);
 	
     while (GameRunning) {
 
 		level.DisplayMap(CurrentLevel);
-		std::cin >> choice;
+		Input();
 		ClearScreen();
 	}
-    
-
 
 	return 0;
+}
+
+void Input() {
+
+	int ch, ex;
+	while (1) {
+		ch = _getch();
+		if (ch && ch != 224) {
+			std::cout << std::endl << "Not arrow: " << (char)ch << std::endl;
+		}
+		else {
+			switch (ex = _getch()) {
+				case KEY_UP:
+					std::cout << std::endl << "Up" << std::endl;
+					break;
+				case KEY_DOWN:
+					std::cout << std::endl << "Down" << std::endl;
+					break;
+				case KEY_LEFT:
+					std::cout << std::endl << "Left" << std::endl;
+					break;
+				case KEY_RIGHT:
+					std::cout << std::endl << "Right" << std::endl;
+					break;
+				default:
+					std::cout << std::endl << "null" << std::endl;
+					break;
+			}
+		}
+		
+	}
+	//do
+
+		//get character input
+
+		//if arrow key
+
+			//call move
+			//break
+
+		//if slash
+			//call command
+			//break
+
+	//while character not arrow or slash
 }
 
 void Instructions() {
