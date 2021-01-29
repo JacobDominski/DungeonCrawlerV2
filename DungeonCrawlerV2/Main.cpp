@@ -11,7 +11,7 @@
 //function prototypes
 void ClearScreen();
 void Instructions();
-void Input();
+void Input(Level* lvl, std::vector<std::vector<char>>* level);
 
 //main function
 int main() {
@@ -32,7 +32,8 @@ int main() {
 		//displays the map
 		level.DisplayMap(CurrentLevel);
 		//gets input
-		Input();
+		Input(&level, &CurrentLevel);
+		//system("pause");
 		//clears screen to repeat
 		ClearScreen();
 	}
@@ -41,41 +42,43 @@ int main() {
 }
 
 //function of the input
-void Input() {
+void Input(Level* lvl, std::vector<std::vector<char>>* level) {
 
 	//ch is the key, ex is for the arrow key
 	int ch, ex;
 	//will change later
-	while (1) {
-		//gets character
-		ch = _getch();
-		//if a character is given and 224 is for the arrow keys
-		if (ch && ch != 224) {
-			std::cout << std::endl << "Not arrow: " << (char)ch << std::endl;
-			//if a slash is pressed type command
-			//TODO: implement if for command
+	std::cout << "char: " << lvl->CurrentTile << std::endl;
+	//gets character
+	ch = _getch();
+	//if a character is given and 224 is for the arrow keys
+	if (ch && ch != 224) {
+		std::cout << std::endl << "Not arrow: " << (char)ch << std::endl;
+		//if a slash is pressed type command
+		//TODO: implement if for command
+	}
+	else {
+		//else get the arrow keys
+		switch (ex = _getch()) {
+			case KEY_UP:
+				//std::cout << std::endl << "Up" << std::endl;
+				lvl->CurrentTile = lvl->Move(level, up, lvl->CurrentTile, 'P');
+				break;
+			case KEY_DOWN:
+				//std::cout << std::endl << "Down" << std::endl;
+				lvl->CurrentTile = lvl->Move(level, down, lvl->CurrentTile, 'P');
+				break;
+			case KEY_LEFT:
+				//std::cout << std::endl << "Left" << std::endl;
+				lvl->CurrentTile = lvl->Move(level, left, lvl->CurrentTile, 'P');
+				break;
+			case KEY_RIGHT:
+				//std::cout << std::endl << "Right" << std::endl;
+				lvl->CurrentTile = lvl->Move(level, right, lvl->CurrentTile, 'P');
+				break;
+			default:
+				std::cout << std::endl << "null" << std::endl;
+				break;
 		}
-		else {
-			//else get the arrow keys
-			switch (ex = _getch()) {
-				case KEY_UP:
-					std::cout << std::endl << "Up" << std::endl;
-					break;
-				case KEY_DOWN:
-					std::cout << std::endl << "Down" << std::endl;
-					break;
-				case KEY_LEFT:
-					std::cout << std::endl << "Left" << std::endl;
-					break;
-				case KEY_RIGHT:
-					std::cout << std::endl << "Right" << std::endl;
-					break;
-				default:
-					std::cout << std::endl << "null" << std::endl;
-					break;
-			}
-		}
-		
 	}
 	
 }

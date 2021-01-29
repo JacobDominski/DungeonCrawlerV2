@@ -21,10 +21,8 @@ enum direction
 struct Level
 {
 	//constructor to create the legend
-	Level() {
-
-		std::map<char, std::string> Legend = CreateLegend();
-	}
+	std::map<char, std::string> Legend = CreateLegend();
+	char CurrentTile = 'S';
 
 	//first map
 	const std::vector<std::vector<char>> level1
@@ -73,7 +71,7 @@ struct Level
 	//method prototypes
 	void DisplayMap(std::vector<std::vector<char>> level, int render = 0);
 
-	void Move(std::vector<std::vector<char>>* level, direction d, char c);
+	char Move(std::vector<std::vector<char>>* level, direction d, char currentTile, char c);
 
 	void Start(std::vector<std::vector<char>>* level);
 
