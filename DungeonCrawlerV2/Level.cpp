@@ -36,46 +36,77 @@ void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
 char Level::Move(std::vector<std::vector<char>>* level, direction d, char currentTile, char c)
 {
 	//Not completed!
-
+	char tileCheck = '~';
 	//get location of player
 	std::tuple<int, int> coordinates = Location(level, c);
 
 	//stores coordinates in an array
 	//z first then x
 	int position[2] = { std::get<0>(coordinates), std::get<1>(coordinates) };
-	std::cout << "x: " << position[0] << ", z: " << position[1] << std::endl;
-	//places the original tile back on the map
-	std::cout << "Tile: " << currentTile << std::endl;
+
+	//std::cout << "x: " << position[0] << ", z: " << position[1] << std::endl;
+	//std::cout << "Tile: " << currentTile << std::endl;
 	
 
 	//moves changes the characters position
-	if (position[1] > 0 && position[1] < 15 && position[0] > 0 && position[0] < 15) {
-		
-		level->at(position[1]).at(position[0]) = currentTile;
-		
-		if (d == up) {
+	if (d == up) {
+		//if true then move
+		tileCheck = level->at(position[1] - 1).at(position[0]);
+		if (!(tileCheck == 'w')) {
+			//move character up
 			position[1]--;
 		}
-		else if (d == down) {
+		else {
+			return currentTile;
+		}
+
+	}
+	else if (d == down) {
+		tileCheck = level->at(position[1] + 1).at(position[0]);
+		if (!(tileCheck == 'w')) {
+			//move character down
 			position[1]++;
 		}
-		else if (d == left) {
+		else {
+			return currentTile;
+		}
+		
+	}
+	else if (d == left) {
+		tileCheck = level->at(position[1]).at(position[0] - 1);
+		if (!(tileCheck == 'w')) {
+			//move character down
 			position[0]--;
 		}
-		else if (d == right) {
+		else {
+			return currentTile;
+		}
+		
+	}
+	else if (d == right) {
+		tileCheck = level->at(position[1]).at(position[0] + 1);
+		if (!(tileCheck == 'w')) {
+			//move character down
 			position[0]++;
 		}
+		else {
+			return currentTile;
+		}
+		
 	}
-	
+	//place down current tile using old coordinates
+	level->at(std::get<1>(coordinates)).at(std::get<0>(coordinates)) = currentTile;
 
-	//saves the new location of the tile
+	//saves the new location of the tile using new coordinates
 	currentTile = level->at(position[1]).at(position[0]);
-	std::cout << "New Position - x: " << position[0] << ", z: " << position[1];
-	//places the character on that tile
-	std::cout << ", character: -" << level->at(position[1]).at(position[0]) << "-\n";
-	//z goes first then x
+
+	//std::cout << "New Position - x: " << position[0] << ", z: " << position[1];
+	//std::cout << ", character: -" << level->at(position[1]).at(position[0]) << "-\n";
+
+	//z goes first then x and places the character on that tile
 	level->at(position[1]).at(position[0]) = c;
 
+	//returns the current tile to be replaced on the next move else send back the original tile
 	return currentTile;
 }
 
@@ -90,6 +121,8 @@ void Level::Start(std::vector<std::vector<char>>* level)
 
 
 }
+
+
 
 //this function gets the coordinates of a certain character (mostly used for player and enemy)
 std::tuple<int, int> Level::Location(std::vector<std::vector<char>>* level, char c)
