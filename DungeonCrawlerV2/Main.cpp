@@ -5,6 +5,7 @@
 #include <chrono>
 #include "Level.h"
 #include "Item.h"
+#include "Player.h"
 
 #define KEY_UP    72
 #define KEY_LEFT  75
@@ -22,11 +23,12 @@ int main() {
 	//creates new instance of the levels
 	Level level;
 
+	//create player
+	Player player;
+
 	//list of items
 	std::vector<Item> Items = CreateItems();
 
-	//player character
-	char player = 'P';
 	bool GameRunning = true;
 	//saves map to current level
 	std::vector<std::vector<char>> CurrentLevel = level.level1;
@@ -55,15 +57,21 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level) {
 
 	//ch is the key, ex is for the arrow key
 	int ch, ex;
+	std::string answer = "";
 	//will change later
 	std::cout << "char: " << lvl->CurrentTile << std::endl;
 	//gets character
 	ch = _getch();
 	//if a character is given and 224 is for the arrow keys
 	if (ch && ch != 224) {
-		std::cout << std::endl << "Not arrow: " << (char)ch << std::endl;
 		//if a slash is pressed type command
 		//TODO: implement if for command
+		if (ch == 47) {
+			std::cout << '/';
+			std::getline(std::cin, answer);
+
+
+		}
 	}
 	else {
 		//else get the arrow keys
