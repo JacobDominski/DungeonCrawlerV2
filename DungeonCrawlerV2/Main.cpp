@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
+#include <thread>
+#include <chrono>
 #include "Level.h"
+#include "Item.h"
 
 #define KEY_UP    72
 #define KEY_LEFT  75
@@ -12,11 +15,15 @@
 void ClearScreen();
 void Instructions();
 void Input(Level* lvl, std::vector<std::vector<char>>* level);
+void Sleep(int milliseconds);
 
 //main function
 int main() {
 	//creates new instance of the levels
 	Level level;
+
+	//list of items
+	std::vector<Item> Items = CreateItems();
 
 	//player character
 	char player = 'P';
@@ -31,9 +38,11 @@ int main() {
     while (GameRunning) {
 		//displays the map
 		level.DisplayMap(CurrentLevel);
+		//sleep
+		Sleep(100);
 		//gets input
 		Input(&level, &CurrentLevel);
-		//system("pause");
+		
 		//clears screen to repeat
 		ClearScreen();
 	}
@@ -83,6 +92,11 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level) {
 	
 }
 
+void Sleep(int milliseconds)
+{
+	std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+}
+
 void Instructions() {
 	std::cout << "use arrow keys to move\n";
 }
@@ -90,4 +104,6 @@ void Instructions() {
 void ClearScreen() {
 	// CSI[2J clears screen, CSI[H moves the cursor to top-left corner
 	std::cout << "\x1B[2J\x1B[H";
+	//instead of clearing the screen, only clear necessary characters surrounding the player and enemies that move
+	//NOTE: modify display map function as well as this.
 }

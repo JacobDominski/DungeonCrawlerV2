@@ -3,6 +3,7 @@
 #include <tuple>
 #include <vector>
 
+
 //displays copy of the map then gets popped off the stack
 void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
 {
@@ -26,7 +27,7 @@ void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
 
 		}
 
-		std::cout << std::endl;
+		std::cout << "\n";
 
 	}
 
@@ -52,7 +53,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	if (d == up) {
 		//if true then move
 		tileCheck = level->at(position[1] - 1).at(position[0]);
-		if (!(tileCheck == 'w')) {
+		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character up
 			position[1]--;
 		}
@@ -63,7 +64,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	}
 	else if (d == down) {
 		tileCheck = level->at(position[1] + 1).at(position[0]);
-		if (!(tileCheck == 'w')) {
+		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[1]++;
 		}
@@ -74,7 +75,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	}
 	else if (d == left) {
 		tileCheck = level->at(position[1]).at(position[0] - 1);
-		if (!(tileCheck == 'w')) {
+		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]--;
 		}
@@ -85,7 +86,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	}
 	else if (d == right) {
 		tileCheck = level->at(position[1]).at(position[0] + 1);
-		if (!(tileCheck == 'w')) {
+		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]++;
 		}
