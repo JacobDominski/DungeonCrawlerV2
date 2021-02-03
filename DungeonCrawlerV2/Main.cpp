@@ -24,8 +24,9 @@ int main() {
 	Level level;
 
 	//create player
-	Player player;
+	//Player player;
 
+	//char player = 'P';
 	//list of items
 	std::vector<Item> Items = CreateItems();
 

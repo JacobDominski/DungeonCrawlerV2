@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	Character = 'P';
+	//Character = 'P';
 	SetName();
 	SetStats(Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
 
