@@ -7,35 +7,35 @@ class Character
 {
 protected:
 
-	int ac;
+	int ac = 0;
 
 	//stats
-	int Strength;
-	int Dexterity;
-	int Constitution;
-	int Intelligence;
-	int Wisdom;
-	int Charisma;
+	int Strength = 0;
+	int Dexterity = 0;
+	int Constitution = 0;
+	int Intelligence = 0;
+	int Wisdom = 0;
+	int Charisma = 0;
 
 	//modifiers
-	int StrMod = (Strength - 10) / 2;
-	int DexMod = (Dexterity - 10) / 2;
-	int ConMod = (Constitution - 10) / 2;
-	int IntMod = (Intelligence - 10) / 2;
-	int WisMod = (Wisdom - 10) / 2;
-	int ChaMod = (Charisma - 10) / 2;
+	int StrMod = 0;
+	int DexMod = 0;
+	int ConMod = 0;
+	int IntMod = 0;
+	int WisMod = 0;
+	int ChaMod = 0;
 
 	//health
-	int Health;
+	int Health = 10;
 
 	//character level
-	int CharacterLevel;
+	int CharacterLevel = 1;
 
 	//character
-	char Char;
+	char Char = '~';
 
 	//current Tile
-	char CurrentTile;
+	char CurrentTile = '~';
 
 	//position
 	int Position[2];

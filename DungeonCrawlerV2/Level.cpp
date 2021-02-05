@@ -10,7 +10,7 @@ void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
 	//takes the current map and the render distance
 	//NOTE: render not implemented
 
-	int x, z;
+	__int64 x, z;
 
 	//setup iterator for both directions
 	std::vector<std::vector<char>>::iterator i;
@@ -44,15 +44,12 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	//stores coordinates in an array
 	//z first then x
 	int position[2] = { std::get<0>(coordinates), std::get<1>(coordinates) };
-
-	//std::cout << "x: " << position[0] << ", z: " << position[1] << std::endl;
-	//std::cout << "Tile: " << currentTile << std::endl;
 	
 
 	//moves changes the characters position
 	if (d == up) {
 		//if true then move
-		tileCheck = level->at(position[1] - 1).at(position[0]);
+		tileCheck = level->at(position[1] - 1.0).at(position[0]);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character up
 			position[1]--;
@@ -63,7 +60,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 
 	}
 	else if (d == down) {
-		tileCheck = level->at(position[1] + 1).at(position[0]);
+		tileCheck = level->at(position[1] + 1.0).at(position[0]);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[1]++;
@@ -74,7 +71,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 		
 	}
 	else if (d == left) {
-		tileCheck = level->at(position[1]).at(position[0] - 1);
+		tileCheck = level->at(position[1]).at(position[0] - 1.0);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]--;
@@ -85,7 +82,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 		
 	}
 	else if (d == right) {
-		tileCheck = level->at(position[1]).at(position[0] + 1);
+		tileCheck = level->at(position[1]).at(position[0] + 1.0);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]++;

@@ -57,7 +57,7 @@ int* Character::GetPosition()
 
 void Character::SetStrMod(int strength)
 {
-	StrMod = std::floor((strength - 10) / 2);
+	StrMod = (int)std::floor((strength - 10) / 2);
 }
 
 int Character::GetStrMod()
@@ -67,7 +67,7 @@ int Character::GetStrMod()
 
 void Character::SetDexMod(int dexterity)
 {
-	DexMod = std::floor((dexterity - 10) / 2);
+	DexMod = (int)std::floor((dexterity - 10) / 2);
 }
 
 int Character::GetDexMod()
@@ -77,7 +77,7 @@ int Character::GetDexMod()
 
 void Character::SetConMod(int constitution)
 {
-	ConMod = std::floor((constitution - 10) / 2);
+	ConMod = (int)std::floor((constitution - 10) / 2);
 }
 
 int Character::GetConMod()
@@ -87,7 +87,7 @@ int Character::GetConMod()
 
 void Character::SetIntMod(int intelligence)
 {
-	IntMod = std::floor((intelligence - 10) / 2);
+	IntMod = (int)std::floor((intelligence - 10) / 2);
 }
 
 int Character::GetIntMod()
@@ -97,7 +97,7 @@ int Character::GetIntMod()
 
 void Character::SetWisMod(int wisdom)
 {
-	WisMod = std::floor((wisdom - 10) / 2);
+	WisMod = (int)std::floor((wisdom - 10) / 2);
 }
 
 int Character::GetWisMod()
@@ -107,7 +107,7 @@ int Character::GetWisMod()
 
 void Character::SetChaMod(int charisma)
 {
-	ChaMod = std::floor((charisma - 10) / 2);
+	ChaMod = (int)std::floor((charisma - 10) / 2);
 }
 
 int Character::GetChaMod()

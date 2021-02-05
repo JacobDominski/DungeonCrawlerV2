@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <conio.h> // _getch()
-#include <thread> //pause
-#include <chrono> //pause
+#include <thread> //sleep
+#include <chrono> //sleep
 #include <ctime>
-#include "GameStructure.h"
+#include "GameStructure.h" //pause
 #include "Level.h"
 #include "Item.h"
 #include "Player.h"
