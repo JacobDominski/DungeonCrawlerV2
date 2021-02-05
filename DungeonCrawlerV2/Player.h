@@ -1,13 +1,16 @@
 #pragma once
 #include <vector>
 #include "Character.h"
-class Player : protected Character
+
+class Player : public Character
 {
 private:
 	int Money;
 	std::string Name;
 	std::vector<Item> Inventory;
 	int carrying_capacity = 20;
+
+	
 
 public:
 	Player();

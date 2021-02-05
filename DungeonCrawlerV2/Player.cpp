@@ -2,15 +2,29 @@
 
 Player::Player()
 {
-	//Character = 'P';
+	Char = 'P';
+	CharacterLevel = 1;
 	SetName();
 	SetStats(Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
+
+	SetStrMod(Strength);
+	SetDexMod(Dexterity);
+	SetConMod(Constitution);
+	SetIntMod(Intelligence);
+	SetWisMod(Wisdom);
+	SetChaMod(Charisma);
 
 	Health = 10 + ConMod;
 	ac = 10 + DexMod;
 
 	SetMoney(RollDice(5, 4, 0, false));
+	//giving myself some extra money for demo testing
 	SetMoney(GetMoney() * 10);
+
+	std::cout << "\nWelcome " << GetName() << "! Here is your stats";
+
+	PlayerStats();
+	pause("Press any key to continue . . . ");
 }
 
 void Player::SetMoney(int money)
@@ -27,7 +41,7 @@ void Player::SetName()
 {
 	std::string name = "";
 
-	std::cout << "Enter your name (15 characters max): ";
+	std::cout << "Enter your name (38 characters max): ";
 
 	std::getline(std::cin, name);
 
@@ -63,13 +77,14 @@ void Player::SetStats(int& strength, int& dexterity, int& constitution, int& int
 {
 	//create an array to store all of the rolls
 	int statID[6];
+	std::cout << "Let's roll a dice to determine your stats!\n";
 	//this for loop goes through 6 times and adds the roll to the array
 	for (int i = 0; i < 6; i++)
 	{
 		//calls the function and stores the roll in the current index 
 		statID[i] = RollDice(4, 6, 0, true);
 	}
-	std::cout << "\n\n\nThere are six stats: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma";
+	std::cout << "\n\nThere are six stats: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma";
 	std::cout << "\nPick which index (starting with 1) you want to put into your stat\n";
 	//displays all of your rolls
 	for (int i = 0; i < 6; i++) { std::cout << statID[i] << "  "; }
@@ -93,16 +108,31 @@ int Player::AddStat(std::string stat, int arr[])
 
 	do {
 		do {
-			std::cout << stat << ": ";
-			std::cin >> choice;
-			choice--;
+			try {
+				std::cout << stat << ": ";
+				std::cin >> choice;
 
-			if (!(arr[choice] == 0)) {
-				break;
+				if (!(int)choice) {
+					throw "Error";
+				}
+
+				choice--;
+
+				if (!(arr[choice] == 0)) {
+					break;
+				}
+				else {
+					std::cout << "\nThis stat has already been used; pick another one!\n";
+				}
 			}
-			else {
-				std::cout << "\nThis stat has already been used; pick another one!";
+			catch (...) {
+				std::cout << "Enter a number 1 through 6\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				//continues the function
+				continue;
 			}
+			
 
 		} while (true);
 		addStat = arr[choice];
@@ -111,8 +141,8 @@ int Player::AddStat(std::string stat, int arr[])
 	
 
 	//this for loop displays the current array after it's been modified
-	for (int i = 0; i < 6; i++) { std::cout << arr[i] << ", "; }
-	std::cout << "\n\n";
+	for (int i = 0; i < 6; i++) { std::cout << arr[i] << " "; }
+	std::cout << "\n";
 	//returns the new stat that has been added
 	return addStat;
 }
@@ -283,7 +313,7 @@ int RollDice(int numOfDice, int numOfSides, int modifier, bool playerStats)
 		firstHigh = secondHigh = thirdHigh = INT_MIN;
 
 		std::cout << "\nto roll, ";
-		system("pause");
+		pause("Press any key to continue . . . ");
 
 		//the for loop rolls 4 dice
 		for (int i = 0; i < numOfDice; i++)
@@ -318,20 +348,25 @@ int RollDice(int numOfDice, int numOfSides, int modifier, bool playerStats)
 	}
 	else//if it's not a regular roll
 	{
+		std::cout << "\nLet's roll to see your starting cash";
 		//it loops the amount of time there are number of dice
 		for (int i = 0; i < numOfDice; i++)
 		{
 			std::cout << "\nto roll, ";
-			system("pause");
+			pause("Press any key to continue . . . ");
 			//this gets the value of the die
 			dieValue = (rand() % numOfSides) + 1;
-			std::cout << "\n * You rolled a " << dieValue << "! * \n\n";
+			std::cout << "You rolled a " << dieValue << "!\n";
 			total += dieValue;//it adds the die value to the current total value
 		}
+		std::cout << "\nYour starting cash is " << total*10 << std::endl;
+		
 	}
 
 	//lastly, it adds the modifier to the total variable
 	total += modifier;
+
+	
 
 	//it then returns the total
 	return total;

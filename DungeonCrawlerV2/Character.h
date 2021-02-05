@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include "Item.h"
+#include "GameStructure.h"
 
 class Character
 {
-
 protected:
 
 	int ac;
@@ -32,8 +32,13 @@ protected:
 	int CharacterLevel;
 
 	//character
-	char Character;
+	char Char;
 
+	//current Tile
+	char CurrentTile;
+
+	//position
+	int Position[2];
 	//slots for equipment
 	//weapon slot
 	//armor slot
@@ -41,7 +46,28 @@ protected:
 	//ring 2 slot
 public:
 
-	char GetCharacter();
+	void SetStrMod(int strength);
+	int GetStrMod();
+
+	void SetDexMod(int dexterity);
+	int GetDexMod();
+
+	void SetConMod(int constitution);
+	int GetConMod();
+
+	void SetIntMod(int intelligence);
+	int GetIntMod();
+
+	void SetWisMod(int wisdom);
+	int GetWisMod();
+
+	void SetChaMod(int charisma);
+	int GetChaMod();
+
+	char GetChar();
+
+	void SetCurrentTile(char tile);
+	char GetCurrentTile();
 
 	void SetAC(int num);
 	int GetAC();
@@ -52,5 +78,7 @@ public:
 	void SetCharacterLevel(int level);
 	int GetCharacterLevel();
 
+	void SetPosition(int x, int z);
+	int* GetPosition();
 };
 
