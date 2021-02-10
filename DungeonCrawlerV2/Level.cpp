@@ -1,8 +1,4 @@
 #include "Level.h"
-#include <iostream>
-#include <tuple>
-#include <vector>
-
 
 //displays copy of the map then gets popped off the stack
 void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
@@ -36,6 +32,7 @@ void Level::DisplayMap(std::vector<std::vector<char>> level, int render)
 //this function moves the player character or non player character up, down, left, or right if allowed
 char Level::Move(std::vector<std::vector<char>>* level, direction d, char currentTile, char c)
 {
+	const unsigned __int64 range = 1;
 	//Not completed!
 	char tileCheck = '~';
 	//get location of player
@@ -49,7 +46,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	//moves changes the characters position
 	if (d == up) {
 		//if true then move
-		tileCheck = level->at(position[1] - 1.0).at(position[0]);
+		tileCheck = level->at(position[1] - range).at(position[0]);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character up
 			position[1]--;
@@ -60,7 +57,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 
 	}
 	else if (d == down) {
-		tileCheck = level->at(position[1] + 1.0).at(position[0]);
+		tileCheck = level->at(position[1] + range).at(position[0]);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[1]++;
@@ -71,7 +68,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 		
 	}
 	else if (d == left) {
-		tileCheck = level->at(position[1]).at(position[0] - 1.0);
+		tileCheck = level->at(position[1]).at(position[0] - range);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]--;
@@ -82,7 +79,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 		
 	}
 	else if (d == right) {
-		tileCheck = level->at(position[1]).at(position[0] + 1.0);
+		tileCheck = level->at(position[1]).at(position[0] + range);
 		if (!(tileCheck == 'w' || tileCheck == 'D')) {
 			//move character down
 			position[0]++;
@@ -126,7 +123,7 @@ void Level::Start(std::vector<std::vector<char>>* level)
 std::tuple<int, int> Level::Location(std::vector<std::vector<char>>* level, char c)
 {
 	//initializes variables to hold coordinates
-	int x, z;
+	__int64 x, z;
 
 	//setup iterator for both directions
 	std::vector<std::vector<char>>::iterator i;

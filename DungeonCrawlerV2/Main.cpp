@@ -1,13 +1,11 @@
-#include <iostream>
-#include <vector>
 #include <conio.h> // _getch()
 #include <thread> //sleep
 #include <chrono> //sleep
-#include <ctime>
 #include "GameStructure.h" //pause
 #include "Level.h"
 #include "Item.h"
 #include "Player.h"
+#include "Commands.h"
 
 #define KEY_UP    72
 #define KEY_LEFT  75
@@ -74,7 +72,7 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level, Player* player) {
 			std::cout << '/';
 			std::getline(std::cin, answer);
 			std::cout << "Command - " << answer;
-			
+			Commands(answer, player);
 		}
 	}
 	else {

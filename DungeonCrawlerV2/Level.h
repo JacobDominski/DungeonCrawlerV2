@@ -3,6 +3,7 @@
 #include <tuple>
 #include <map>
 #include <string>
+#include <iostream>
 
 #define MAX_WIDTH 16
 #define MAX_HEIGHT 16
