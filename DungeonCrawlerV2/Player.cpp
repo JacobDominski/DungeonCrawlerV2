@@ -3,9 +3,10 @@
 Player::Player()
 {
 	Char = 'P';
+	SetCurrentTile('S');
 	CharacterLevel = 1;
 	SetName();
-	SetStats(Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
+	SetStats(&Strength, &Dexterity, &Constitution, &Intelligence, &Wisdom, &Charisma);
 
 	SetStrMod(Strength);
 	SetDexMod(Dexterity);
@@ -73,7 +74,7 @@ std::vector<Item> Player::GetInventory()
 	return Inventory;
 }
 
-void Player::SetStats(int& strength, int& dexterity, int& constitution, int& intelligence, int& wisdom, int& charisma)
+void Player::SetStats(int* strength, int* dexterity, int* constitution, int* intelligence, int* wisdom, int* charisma)
 {
 	//create an array to store all of the rolls
 	int statID[6];
@@ -91,12 +92,12 @@ void Player::SetStats(int& strength, int& dexterity, int& constitution, int& int
 	std::cout << "\n\n";
 
 	//calls the function to add the roll to each stat
-	strength = AddStat("Strength", statID);
-	dexterity = AddStat("Dexterity", statID);
-	constitution = AddStat("Constitution", statID);
-	intelligence = AddStat("Intelligence", statID);
-	wisdom = AddStat("Wisdom", statID);
-	charisma = AddStat("Charisma", statID);
+	*strength = AddStat("Strength", statID);
+	*dexterity = AddStat("Dexterity", statID);
+	*constitution = AddStat("Constitution", statID);
+	*intelligence = AddStat("Intelligence", statID);
+	*wisdom = AddStat("Wisdom", statID);
+	*charisma = AddStat("Charisma", statID);
 }
 
 int Player::AddStat(std::string stat, int arr[])
@@ -147,7 +148,7 @@ int Player::AddStat(std::string stat, int arr[])
 	return addStat;
 }
 
-void Player::addItem(Item& inventoryItem)
+void Player::addItem(Item inventoryItem)
 {
 	Inventory.push_back(inventoryItem);
 
@@ -156,49 +157,49 @@ void Player::addItem(Item& inventoryItem)
 	}
 }
 
-void Player::DeleteItem(Item& inventoryItem)
+void Player::DeleteItem(Item* inventoryItem)
 {
 	auto it = Inventory.begin();
 	int id = -1;//starts at the beginning of the index of the player inventory
 	do
 	{
 		++id;
-	} while (inventoryItem.name != Inventory[id].name && it != Inventory.end());//it keeps looping until it finds the item or until it makes it to the end of the array
+	} while (inventoryItem->name != Inventory[id].name && it != Inventory.end());//it keeps looping until it finds the item or until it makes it to the end of the array
 
 	std::advance(it, id);
 	Inventory.erase(it);
 
-	if (inventoryItem.id > 34 && inventoryItem.id < 38) {
-		SetCarryingCapacity(GetCarryingCapacity() - inventoryItem.effect);
+	if (inventoryItem->id > 34 && inventoryItem->id < 38) {
+		SetCarryingCapacity(GetCarryingCapacity() - inventoryItem->effect);
 	}
 }
 
-void Player::ShowItem(Item& inventoryItem)
+void Player::ShowItem(Item* inventoryItem)
 {
 	std::cout << "\n\n----------------------------------\n";
-	std::cout << inventoryItem.name;
-	std::cout << "\nType: " << inventoryItem.type;
-	std::cout << "\nDescription: " << inventoryItem.flavor_text;
-	std::cout << "\nCost: " << inventoryItem.cost;
-	std::cout << "\nWeight: " << inventoryItem.weight;
-	std::cout << "\nProperty: " << inventoryItem.property;
-	std::cout << "\nRequired Level: lvl " << inventoryItem.requirement_level;
-	switch (inventoryItem.type)
+	std::cout << inventoryItem->name;
+	std::cout << "\nType: " << inventoryItem->type;
+	std::cout << "\nDescription: " << inventoryItem->flavor_text;
+	std::cout << "\nCost: " << inventoryItem->cost;
+	std::cout << "\nWeight: " << inventoryItem->weight;
+	std::cout << "\nProperty: " << inventoryItem->property;
+	std::cout << "\nRequired Level: lvl " << inventoryItem->requirement_level;
+	switch (inventoryItem->type)
 	{
 	case Weapon:
-		std::cout << "\nDamage: 1d" << inventoryItem.effect;
+		std::cout << "\nDamage: 1d" << inventoryItem->effect;
 		break;
 	case Armor:
-		std::cout << "\nArmor: +" << inventoryItem.effect;
+		std::cout << "\nArmor: +" << inventoryItem->effect;
 		break;
 	case Potion:
-		std::cout << "\nPotion: +" << inventoryItem.effect;
+		std::cout << "\nPotion: +" << inventoryItem->effect;
 		break;
 	case Ring:
-		std::cout << "\nRing: +" << inventoryItem.effect;
+		std::cout << "\nRing: +" << inventoryItem->effect;
 		break;
 	case Misc_Item:
-		std::cout << "\n+" << inventoryItem.effect << " Carrying Capacity";
+		std::cout << "\n+" << inventoryItem->effect << " Carrying Capacity";
 		break;
 	}
 	std::cout << "\n----------------------------------\n";

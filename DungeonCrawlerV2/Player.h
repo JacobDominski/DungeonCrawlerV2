@@ -27,15 +27,15 @@ public:
 	void SetInventory(std::vector<Item> inventory);
 	std::vector<Item> GetInventory();
 
-	void SetStats(int& strength, int& dexterity, int& constitution, int& intelligence, int& wisdom, int& charisma);
+	void SetStats(int* strength, int* dexterity, int* constitution, int* intelligence, int* wisdom, int* charisma);
 	int AddStat(std::string stat, int arr[]);
 
 	//adds item to player inventory
-	void addItem(Item& inventoryItem);
+	void addItem(Item inventoryItem);
 	//deletes item from player inventory
-	void DeleteItem(Item& inventoryItem);
+	void DeleteItem(Item* inventoryItem);
 
-	void ShowItem(Item& inventoryItem);
+	void ShowItem(Item* inventoryItem);
 
 	int SearchPlayerItem(std::string name);
 
