@@ -17,7 +17,7 @@ void Store(std::vector<Item>& list)
 		{
 			//this first part lists the name
 			//20 characters
-			NameSize = list[id].name.size();
+			NameSize = (int)list[id].name.size();
 			format = 21 - NameSize;
 			std::cout << list[id].name;
 			for (int space = 0; space < format; space++)
@@ -26,14 +26,14 @@ void Store(std::vector<Item>& list)
 			}
 			//this part list the costs
 			std::cout << " | Cost: " << list[id].cost;
-			format = 5 - std::to_string(list[id].cost).size();
+			format = 5 - (int)std::to_string(list[id].cost).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
 			}
 			//this part lists the weight
 			std::cout << " | Weight: " << list[id].weight;
-			format = 5 - std::to_string(list[id].weight).size();
+			format = 5 - (int)std::to_string(list[id].weight).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";

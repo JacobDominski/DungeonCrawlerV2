@@ -6,10 +6,10 @@
 /*
 List of commands
 /help - shows list of all commands
-/playerstats - shows player stats
+/stats - shows player stats
 /inventory - shows player their inventory
 /drop - deletes item from inventory
-/playeritem - shows item details of specific item
+/item - shows item details of specific item
 /equip - equips item to player like ring, sword, armor
 /dequip - dequips item from player like ring, sword, armor
 /equipped - shows list of all items equipped to player
@@ -29,6 +29,6 @@ void EquipItem(std::string* command, Player* player);
 
 void DequipItem(std::string* command, Player* player);
 
-void Equipped(std::string* command, Player* player);
+void Equipped(Player* player);
 
 void Save(Player* player);
