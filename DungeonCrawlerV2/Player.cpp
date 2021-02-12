@@ -223,21 +223,52 @@ void Player::PlayerStats()
 	std::cout << "\nPlayer Carrying Capacity: " << carrying_capacity;
 	std::cout << "\n------------------------------\n\n";
 }
-/*
-void Player::SetWeapon(Item item)
+
+void Player::SetWeapon(int id)
 {
+	//id parameter represents the id in the inventory
+
+	//store user input
+	int choice = 0;
+
 	//check if item to equip is valid
+	if (Inventory[id].type != Weapon) {
+		//not a weapon
+		return;
+	}
+
 
 	//check if the slot is empty
+	if (id < 0) {
+		//empty
 		//set weapon name to slot
+		WeaponSlot = id;
 		//add all the modifiers for the weapon
 
-	//if not, say it's already taken
+	}
+	else {
+		//if not, say it's already taken
+		std::cout << "It looks like you are already holding a weapon!\nWould you like to replace it?";
 		//would you like to replace?
-			//replace item
+		do {
+			std::cout << "\nType (Y/N): ";
+			choice = _getch();
+
+		} while (choice == 89 || choice == 121 || choice == 78 || choice == 110);
 		
-	
-}*/
+		//if the user chose Y
+		if (choice == 89 || choice == 121) {
+			//switches item
+			WeaponSlot = id;
+		}
+		//if the user chose N
+		else if (choice == 78 || choice == 110) {
+			std::cout << "\nAll right! No weapon was equipped!\n";
+		}
+		//replace item
+	}
+
+}
 
 void Player::SetStats(int* strength, int* dexterity, int* constitution, int* intelligence, int* wisdom, int* charisma)
 {

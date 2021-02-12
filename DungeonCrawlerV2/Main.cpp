@@ -1,4 +1,3 @@
-#include <conio.h> // _getch()
 #include <thread> //sleep
 #include <chrono> //sleep
 #include "GameStructure.h" //pause

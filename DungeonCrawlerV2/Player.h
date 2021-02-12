@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <conio.h>// _getch()
 #include "Character.h"
 
 class Player : public Character
@@ -10,14 +11,17 @@ private:
 	std::vector<Item> Inventory;
 	int carrying_capacity = 20;
 
-	/*
-	Item WeaponSlot;
-	Item ArmorSlot;
-	Item RingOneSlot;
-	Item RingTwoSlot;
-	*/
+	
+	int WeaponSlot = -1;
+	int ArmorSlot = -1;
+	int RingOneSlot = -1;
+	int RingTwoSlot = -1;
+	
 
 public:
+
+	//Item Punch(1, "Punch", Weapon, "Default Attack", 0, 0, "OneHanded", 0, 1);
+
 	Player();
 
 	void SetMoney(int money);
@@ -48,19 +52,19 @@ public:
 
 	void PlayerStats();
 
-	/*
-	void SetWeapon(Item item);
+	
+	void SetWeapon(int id);
 	Item GetWeapon();
 
-	void SetArmor(Item item);
+	void SetArmor(int id);
 	Item GetArmor();
 
-	void SetRingOne(Item item);
+	void SetRingOne(int id);
 	Item GetRingOne();
 
-	void SetRingTwo(Item item);
+	void SetRingTwo(int id);
 	Item GetRingTwo();
-	*/
+	
 };
 
 int RollDice(int numOfDice, int numOfSides, int modifier, bool playerStats);
