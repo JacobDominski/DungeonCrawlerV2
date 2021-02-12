@@ -45,16 +45,6 @@ int Character::GetCharacterLevel()
 	return CharacterLevel;
 }
 
-void Character::SetPosition(int x, int z)
-{
-
-}
-
-int* Character::GetPosition()
-{
-	return nullptr;
-}
-
 void Character::SetStrMod(int strength)
 {
 	StrMod = (int)std::floor((strength - 10) / 2);

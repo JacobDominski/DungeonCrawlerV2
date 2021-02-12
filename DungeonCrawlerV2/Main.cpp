@@ -21,7 +21,7 @@ void Sleep(int milliseconds);
 //main function
 int main() {
 	//
-	srand(time(0));
+	srand(time(NULL));
 	//creates new instance of the levels
 	Level level;
 

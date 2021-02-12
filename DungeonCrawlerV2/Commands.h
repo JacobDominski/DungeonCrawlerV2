@@ -19,7 +19,16 @@ List of commands
 
 void Commands(std::string command, Player* player);
 
+int GetItem(std::string* command, Player* player);
 
+void DropItem(std::string* command, Player* player);
 
+void DisplayItem(std::string* command, Player* player);
 
+void EquipItem(std::string* command, Player* player);
 
+void DequipItem(std::string* command, Player* player);
+
+void Equipped(std::string* command, Player* player);
+
+void Save(Player* player);

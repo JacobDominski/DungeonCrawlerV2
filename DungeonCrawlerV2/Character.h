@@ -36,14 +36,8 @@ protected:
 
 	//current Tile
 	char CurrentTile = '~';
+	
 
-	//position
-	int Position[2];
-	//slots for equipment
-	//weapon slot
-	//armor slot
-	//ring 1 slot
-	//ring 2 slot
 public:
 
 	void SetStrMod(int strength);
@@ -78,7 +72,6 @@ public:
 	void SetCharacterLevel(int level);
 	int GetCharacterLevel();
 
-	void SetPosition(int x, int z);
-	int* GetPosition();
+	
 };
 

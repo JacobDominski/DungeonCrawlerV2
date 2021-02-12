@@ -10,7 +10,12 @@ private:
 	std::vector<Item> Inventory;
 	int carrying_capacity = 20;
 
-	
+	/*
+	Item WeaponSlot;
+	Item ArmorSlot;
+	Item RingOneSlot;
+	Item RingTwoSlot;
+	*/
 
 public:
 	Player();
@@ -31,7 +36,7 @@ public:
 	int AddStat(std::string stat, int arr[]);
 
 	//adds item to player inventory
-	void addItem(Item inventoryItem);
+	void AddItem(Item inventoryItem);
 	//deletes item from player inventory
 	void DeleteItem(Item* inventoryItem);
 
@@ -43,7 +48,19 @@ public:
 
 	void PlayerStats();
 
-	void EquipItem();
+	/*
+	void SetWeapon(Item item);
+	Item GetWeapon();
+
+	void SetArmor(Item item);
+	Item GetArmor();
+
+	void SetRingOne(Item item);
+	Item GetRingOne();
+
+	void SetRingTwo(Item item);
+	Item GetRingTwo();
+	*/
 };
 
 int RollDice(int numOfDice, int numOfSides, int modifier, bool playerStats);

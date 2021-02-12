@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player() 
 {
 	Char = 'P';
 	SetCurrentTile('S');
@@ -25,6 +25,7 @@ Player::Player()
 	std::cout << "\nWelcome " << GetName() << "! Here is your stats";
 
 	PlayerStats();
+
 	pause("Press any key to continue . . . ");
 }
 
@@ -74,81 +75,7 @@ std::vector<Item> Player::GetInventory()
 	return Inventory;
 }
 
-void Player::SetStats(int* strength, int* dexterity, int* constitution, int* intelligence, int* wisdom, int* charisma)
-{
-	//create an array to store all of the rolls
-	int statID[6];
-	std::cout << "Let's roll a dice to determine your stats!\n";
-	//this for loop goes through 6 times and adds the roll to the array
-	for (int i = 0; i < 6; i++)
-	{
-		//calls the function and stores the roll in the current index 
-		statID[i] = RollDice(4, 6, 0, true);
-	}
-	std::cout << "\n\nThere are six stats: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma";
-	std::cout << "\nPick which index (starting with 1) you want to put into your stat\n";
-	//displays all of your rolls
-	for (int i = 0; i < 6; i++) { std::cout << statID[i] << "  "; }
-	std::cout << "\n\n";
-
-	//calls the function to add the roll to each stat
-	*strength = AddStat("Strength", statID);
-	*dexterity = AddStat("Dexterity", statID);
-	*constitution = AddStat("Constitution", statID);
-	*intelligence = AddStat("Intelligence", statID);
-	*wisdom = AddStat("Wisdom", statID);
-	*charisma = AddStat("Charisma", statID);
-}
-
-int Player::AddStat(std::string stat, int arr[])
-{
-	//creates two variables: one for the players choice to choose which roll to use for the particular stat
-	//and the added stat variable which applies the new stat to the stat
-	int choice;
-	int addStat = 0;
-
-	do {
-		do {
-			try {
-				std::cout << stat << ": ";
-				std::cin >> choice;
-
-				if (!(int)choice) {
-					throw "Error";
-				}
-
-				choice--;
-
-				if (!(arr[choice] == 0)) {
-					break;
-				}
-				else {
-					std::cout << "\nThis stat has already been used; pick another one!\n";
-				}
-			}
-			catch (...) {
-				std::cout << "Enter a number 1 through 6\n";
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				//continues the function
-				continue;
-			}
-			
-
-		} while (true);
-		addStat = arr[choice];
-		arr[choice] = 0;
-	} while (choice < 0 || choice > 6);
-	
-
-	//this for loop displays the current array after it's been modified
-	for (int i = 0; i < 6; i++) { std::cout << arr[i] << " "; }
-	std::cout << "\n";
-	//returns the new stat that has been added
-	return addStat;
-}
-
-void Player::addItem(Item inventoryItem)
+void Player::AddItem(Item inventoryItem)
 {
 	Inventory.push_back(inventoryItem);
 
@@ -225,11 +152,16 @@ int Player::SearchPlayerItem(std::string name)
 
 void Player::DisplayInventory()
 {
+	if (Inventory.empty()) {
+		std::cout << "You have no items!\n";
+		return;
+	}
+
 	std::cout << "\n\n";
 	int id = 0;//this stores the id of each item
 	int NameSize = 0;//these two variables organize the store to make it look nice
 	int format = 0;
-	int x = round(Inventory.size() / 2);
+	int x = (int)round(Inventory.size() / 2);
 	std::cout << "\nPLAYER INVENTORY\n";
 	std::cout << "-----------------------------------------------------------------------------------------------------------\n";
 	for (int i = 0; i < 19; i++)
@@ -242,7 +174,7 @@ void Player::DisplayInventory()
 			}
 			//this first part lists the name
 			//20 characters
-			NameSize = Inventory[id].name.size();
+			NameSize = (int)Inventory[id].name.size();
 			format = 21 - NameSize;
 			std::cout << Inventory[id].name;
 			for (int space = 0; space < format; space++)
@@ -251,14 +183,14 @@ void Player::DisplayInventory()
 			}
 			//this part list the costs
 			std::cout << " | Cost: " << Inventory[id].cost;
-			format = 5 - std::to_string(Inventory[id].cost).size();
+			format = 5 - (int)std::to_string(Inventory[id].cost).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
 			}
 			//this part lists the weight
 			std::cout << " | Weight: " << Inventory[id].weight;
-			format = 5 - std::to_string(Inventory[id].weight).size();
+			format = 5 - (int)std::to_string(Inventory[id].weight).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
@@ -291,9 +223,94 @@ void Player::PlayerStats()
 	std::cout << "\nPlayer Carrying Capacity: " << carrying_capacity;
 	std::cout << "\n------------------------------\n\n";
 }
-
-void Player::EquipItem()
+/*
+void Player::SetWeapon(Item item)
 {
+	//check if item to equip is valid
+
+	//check if the slot is empty
+		//set weapon name to slot
+		//add all the modifiers for the weapon
+
+	//if not, say it's already taken
+		//would you like to replace?
+			//replace item
+		
+	
+}*/
+
+void Player::SetStats(int* strength, int* dexterity, int* constitution, int* intelligence, int* wisdom, int* charisma)
+{
+	//create an array to store all of the rolls
+	int statID[6];
+	std::cout << "Let's roll a dice to determine your stats!\n";
+	//this for loop goes through 6 times and adds the roll to the array
+	for (int i = 0; i < 6; i++)
+	{
+		//calls the function and stores the roll in the current index 
+		statID[i] = RollDice(4, 6, 0, true);
+	}
+	std::cout << "\n\nThere are six stats: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma";
+	std::cout << "\nPick which index (starting with 1) you want to put into your stat\n";
+	//displays all of your rolls
+	for (int i = 0; i < 6; i++) { std::cout << statID[i] << "  "; }
+	std::cout << "\n\n";
+
+	//calls the function to add the roll to each stat
+	*strength = AddStat("Strength", statID);
+	*dexterity = AddStat("Dexterity", statID);
+	*constitution = AddStat("Constitution", statID);
+	*intelligence = AddStat("Intelligence", statID);
+	*wisdom = AddStat("Wisdom", statID);
+	*charisma = AddStat("Charisma", statID);
+}
+
+int Player::AddStat(std::string stat, int arr[])
+{
+	//creates two variables: one for the players choice to choose which roll to use for the particular stat
+	//and the added stat variable which applies the new stat to the stat
+	int choice;
+	int addStat = 0;
+
+	do {
+		do {
+			try {
+				std::cout << stat << ": ";
+				std::cin >> choice;
+
+				if (!(int)choice) {
+					throw "Error";
+				}
+
+				choice--;
+
+				if (!(arr[choice] == 0)) {
+					break;
+				}
+				else {
+					std::cout << "\nThis stat has already been used; pick another one!\n";
+				}
+			}
+			catch (...) {
+				std::cout << "Enter a number 1 through 6\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				//continues the function
+				continue;
+			}
+
+
+		} while (true);
+		addStat = arr[choice];
+		arr[choice] = 0;
+	} while (choice < 0 || choice > 6);
+
+
+	//this for loop displays the current array after it's been modified
+	for (int i = 0; i < 6; i++) { std::cout << arr[i] << " "; }
+	std::cout << "\n";
+	//returns the new stat that has been added
+	return addStat;
 }
 
 int RollDice(int numOfDice, int numOfSides, int modifier, bool playerStats)
