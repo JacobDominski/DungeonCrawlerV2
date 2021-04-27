@@ -6,6 +6,7 @@ Player::Player()
 	SetCurrentTile('S');
 	CharacterLevel = 1;
 	SetName();
+	SetLevel(1);
 	SetStats(&Strength, &Dexterity, &Constitution, &Intelligence, &Wisdom, &Charisma);
 
 	SetStrMod(Strength);
@@ -53,6 +54,16 @@ void Player::SetName()
 std::string Player::GetName()
 {
 	return Name;
+}
+
+void Player::SetLevel(int level)
+{
+	Level = level;
+}
+
+int Player::GetLevel()
+{
+	return Level;
 }
 
 void Player::SetCarryingCapacity(int carrycapacity)
@@ -211,6 +222,7 @@ void Player::PlayerStats()
 	std::cout << "\n------------------------------";
 	std::cout << "\nPLAYER STATS:";
 	std::cout << "\nName: " << Name;
+	std::cout << "\nLevel: " << Level;
 	std::cout << "\nStrength:     " << Strength << " | StrMod: " << StrMod;
 	std::cout << "\nDexterity:    " << Dexterity << " | DexMod: " << DexMod;
 	std::cout << "\nConstitution: " << Constitution << " | ConMod: " << ConMod;

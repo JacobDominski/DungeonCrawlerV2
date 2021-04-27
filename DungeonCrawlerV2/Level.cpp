@@ -101,6 +101,7 @@ char Level::Move(std::vector<std::vector<char>>* level, direction d, char curren
 	//z goes first then x and places the character on that tile
 	level->at(position[1]).at(position[0]) = c;
 
+
 	//returns the current tile to be replaced on the next move else send back the original tile
 	return currentTile;
 }

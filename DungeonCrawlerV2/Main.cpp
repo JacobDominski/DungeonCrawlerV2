@@ -39,6 +39,8 @@ int main() {
     while (GameRunning) {
 		//clears screen to repeat
 		ClearScreen();
+		//check tile for enemy or chest
+
 		//displays the map
 		level.DisplayMap(CurrentLevel);
 		Help();

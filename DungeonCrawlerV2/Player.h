@@ -8,6 +8,7 @@ class Player : public Character
 private:
 	int Money;
 	std::string Name;
+	int Level;
 	std::vector<Item> Inventory;
 	int carrying_capacity = 20;
 
@@ -29,6 +30,9 @@ public:
 
 	void SetName();
 	std::string GetName();
+
+	void SetLevel(int level);
+	int GetLevel();
 
 	void SetCarryingCapacity(int carrycapacity);
 	int GetCarryingCapacity();
