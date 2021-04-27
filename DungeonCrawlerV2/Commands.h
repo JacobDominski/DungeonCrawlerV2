@@ -17,18 +17,26 @@ List of commands
 /quit - checks if user wants to save first then exits the program
 */
 
+//main function that diverts to different functions
 void Commands(std::string command, Player* player);
 
-int GetItem(std::string* command, Player* player);
+//gets item from the command and returns the id
+int GetItem(std::string* command, Player* player, int len);
 
+//drops specified item
 void DropItem(std::string* command, Player* player);
 
+//displays stats of specified item
 void DisplayItem(std::string* command, Player* player);
 
+//equips specified item to a slot
 void EquipItem(std::string* command, Player* player);
 
+//dequips specified item from a slot
 void DequipItem(std::string* command, Player* player);
 
+//displays all equipped items
 void Equipped(Player* player);
 
+//saves player progress
 void Save(Player* player);

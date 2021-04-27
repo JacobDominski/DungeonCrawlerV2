@@ -171,8 +171,8 @@ std::map<char, std::string> Level::CreateLegend()
 	legend['S'] = "Start";
 	legend['e'] = "Enemy";
 	legend['E'] = "Enemy Boss";
-	legend['c'] = "Chest";
-	legend['C'] = "Locked Chest";
+	legend['c'] = "Open Chest";
+	legend['C'] = "Closed Chest";
 	legend['P'] = "Player";
 
 	return legend;

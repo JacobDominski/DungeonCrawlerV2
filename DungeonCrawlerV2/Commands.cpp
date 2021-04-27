@@ -61,14 +61,14 @@ void Commands(std::string command, Player* player)
 
 }
 
-int GetItem(std::string* command, Player* player)
+int GetItem(std::string* command, Player* player, int len)
 {
 	if (player->GetInventory().empty()) {
 		std::cout << "\nYou have no items!\n";
 		return -2;
 	}
 
-	std::string itemname = command->substr(6, (command->length() - 6));
+	std::string itemname = command->substr(len, (command->length() - len));
 
 	int id = player->SearchPlayerItem(itemname);
 
@@ -78,7 +78,7 @@ int GetItem(std::string* command, Player* player)
 
 void DropItem(std::string* command, Player* player) {
 	
-	int id = GetItem(command, player);
+	int id = GetItem(command, player, 6);
 
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
@@ -96,19 +96,19 @@ void DropItem(std::string* command, Player* player) {
 void DisplayItem(std::string* command, Player* player)
 {
 	
-	int id = GetItem(command, player);
+	int id = GetItem(command, player, 6);
 
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
 	}
-	else {
+	else if (id >= 0) {
 		player->ShowItem(&player->GetInventory()[id]);
 	}
 }
 
 void EquipItem(std::string* command, Player* player)
 {
-	int id = GetItem(command, player);
+	int id = GetItem(command, player, 7);
 
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
@@ -145,7 +145,7 @@ void EquipItem(std::string* command, Player* player)
 
 void DequipItem(std::string* command, Player* player)
 {
-	int id = GetItem(command, player);
+	int id = GetItem(command, player, 8);
 
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";

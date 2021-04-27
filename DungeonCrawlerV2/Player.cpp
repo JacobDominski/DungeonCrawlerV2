@@ -221,7 +221,7 @@ void Player::PlayerStats()
 	std::cout << "\nArmor Class: " << ac;
 	std::cout << "\nPlayer Money: $" << Money;
 	std::cout << "\nPlayer Carrying Capacity: " << carrying_capacity;
-	std::cout << "\n------------------------------\n\n";
+	std::cout << "\n------------------------------\n";
 }
 
 void Player::SetWeapon(int id)
