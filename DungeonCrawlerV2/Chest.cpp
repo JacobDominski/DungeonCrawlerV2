@@ -32,10 +32,18 @@ void TileCheck(Player* player, std::vector<Item>* catalog)
 				choice = _getch();
 
 			} while (!(choice == 89 || choice == 121 || choice == 78 || choice == 110));
-
+			//if yes
 			if (choice == 89 || choice == 121) {
-				player->AddItem(catalog->at(itemID));
-				player->SetCarryingCapacity(player->GetCarryingCapacity() - catalog->at(itemID).weight);
+				//check if you have enough space
+				if (player->GetCarryingCapacity() > catalog->at(itemID).weight) {
+					std::cout << "\nItem added!";
+					player->AddItem(catalog->at(itemID));
+					player->SetCarryingCapacity(player->GetCarryingCapacity() - catalog->at(itemID).weight);
+				}
+				else {
+					std::cout << "\nOh No! It looks like you don't have enough space left!";
+				}
+				
 			}
 
 			player->SetCurrentTile('c');

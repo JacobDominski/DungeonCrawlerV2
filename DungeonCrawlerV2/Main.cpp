@@ -73,7 +73,7 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level, Player* player) {
 		if (ch == 47) {
 			std::cout << '/';
 			std::getline(std::cin, answer);
-			std::cout << "Command - /" << answer;
+			std::cout << "Command - /" << answer << std::endl;
 			Commands("/"+answer, player);
 			pause("\npress a key to continue...");
 		}

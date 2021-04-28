@@ -343,6 +343,7 @@ void Player::SetArmor(int id)
 			//call the dequip function
 			ArmorSlot = id;
 			//add all modifiers to the weapon
+
 		}
 		//if the user chose N
 		else if (choice == 78 || choice == 110) {

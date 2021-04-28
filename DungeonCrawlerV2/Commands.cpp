@@ -41,7 +41,7 @@ void Commands(std::string command, Player* player)
 	else if (command.find("/item") == 0) {
 		DisplayItem(&command, player);
 	}
-	else if (command.find("/equip") == 0) {
+	else if (command.find("/equip ") == 0) {
 		EquipItem(&command, player);
 	}
 	else if (command.find("/dequip") == 0) {
@@ -117,7 +117,7 @@ void EquipItem(std::string* command, Player* player)
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
 	}
-	else {
+	else if (id >= 0) {
 		//if item is weapon
 		if (player->GetInventory()[id].type == Weapon) {
 			player->SetWeapon(id);
@@ -128,6 +128,7 @@ void EquipItem(std::string* command, Player* player)
 		else if (player->GetInventory()[id].type == Ring) {
 			//Ask which slot 1 or 2
 			int choice = 0;
+			std::cout << "Which slot would you like to equip your ring?\n1 or 2 : ";
 			do {
 				choice = _getch();
 			} while (choice != 49 && choice != 50);
@@ -154,7 +155,7 @@ void DequipItem(std::string* command, Player* player)
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
 	}
-	else {
+	else if (id >= 0) {
 		//if item is weapon
 		if (player->GetInventory()[id].type == Weapon) {
 			//reset modifiers
@@ -190,12 +191,12 @@ void DequipItem(std::string* command, Player* player)
 
 void Equipped(Player* player)
 {
-	std::cout << "------------------------------\n";
-	std::cout << "Weapon Slot   | " << player->GetWeapon().name;
-	std::cout << "Armor Slot    | " << player->GetArmor().name;
-	std::cout << "Ring One Slot | " << player->GetRingOne().name;
-	std::cout << "Ring Two Slot | " << player->GetRingTwo().name;
-	std::cout << "------------------------------\n";
+	std::cout << "\n------------------------------";
+	std::cout << "\nWeapon Slot   | " << player->GetWeapon().name;
+	std::cout << "\nArmor Slot    | " << player->GetArmor().name;
+	std::cout << "\nRing One Slot | " << player->GetRingOne().name;
+	std::cout << "\nRing Two Slot | " << player->GetRingTwo().name;
+	std::cout << "\n------------------------------";
 }
 
 void Save(Player* player)
