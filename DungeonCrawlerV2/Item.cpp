@@ -3,7 +3,7 @@
 
 
 //this function displays all of the items in the game
-void DisplayItems(std::vector<Item>& list)
+void DisplayItems(std::vector<Item>* list)
 {
 	std::cout << "\n\n";
 	int id = 0;//this stores the id of each item
@@ -17,23 +17,23 @@ void DisplayItems(std::vector<Item>& list)
 		{
 			//this first part lists the name
 			//20 characters
-			NameSize = (int)list[id].name.size();
+			NameSize = (int)list->at(id).name.size();
 			format = 21 - NameSize;
-			std::cout << list[id].name;
+			std::cout << list->at(id).name;
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
 			}
 			//this part list the costs
-			std::cout << " | Cost: " << list[id].cost;
-			format = 5 - (int)std::to_string(list[id].cost).size();
+			std::cout << " | Cost: " << list->at(id).cost;
+			format = 5 - (int)std::to_string(list->at(id).cost).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
 			}
 			//this part lists the weight
-			std::cout << " | Weight: " << list[id].weight;
-			format = 5 - (int)std::to_string(list[id].weight).size();
+			std::cout << " | Weight: " << list->at(id).weight;
+			format = 5 - (int)std::to_string(list->at(id).weight).size();
 			for (int space = 0; space < format; space++)
 			{
 				std::cout << " ";
@@ -48,7 +48,7 @@ void DisplayItems(std::vector<Item>& list)
 	std::cout << "\n\n";
 }
 
-int SearchItem(std::vector<Item> StoreItem, std::string ItemName)
+int SearchItem(std::vector<Item>* StoreItem, std::string ItemName)
 {
 	//goes through a while loop to check if the name argument matches the item name
 	int id = -1;
@@ -56,11 +56,11 @@ int SearchItem(std::vector<Item> StoreItem, std::string ItemName)
 	do
 	{
 		++id;
-	} while (ItemName != StoreItem[id].name && id < 37);
+	} while (ItemName != StoreItem->at(id).name && id < 37);
 
 
 	//if there is a match, it returns the id from the inventory vector
-	if (ItemName == StoreItem[id].name)
+	if (ItemName == StoreItem->at(id).name)
 	{
 		return id;
 	}//else it returns a -1 which will be used to see if it came back false and -1 is impossible to return from a vector
