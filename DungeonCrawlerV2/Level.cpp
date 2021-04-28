@@ -178,3 +178,4 @@ std::map<char, std::string> Level::CreateLegend()
 
 	return legend;
 }
+

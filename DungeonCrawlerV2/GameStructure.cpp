@@ -31,3 +31,8 @@ void ClearScreen() {
 	//instead of clearing the screen, only clear necessary characters surrounding the player and enemies that move
 	//NOTE: modify display map function as well as this.
 }
+
+int GetRandom(int min, int max)
+{
+	return min + rand() % ((max + 1) - min);
+}

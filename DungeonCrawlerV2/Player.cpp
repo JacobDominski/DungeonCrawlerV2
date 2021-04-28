@@ -76,6 +76,16 @@ int Player::GetCarryingCapacity()
 	return carrying_capacity;
 }
 
+void Player::SetFloorNum(int floornum)
+{
+	floorNum = floornum;
+}
+
+int Player::GetFloorNum()
+{
+	return floorNum;
+}
+
 void Player::SetInventory(std::vector<Item> inventory)
 {
 	Inventory = inventory;

@@ -80,5 +80,7 @@ struct Level
 
 	std::map<char, std::string> CreateLegend();
 
+	
+
 };
 

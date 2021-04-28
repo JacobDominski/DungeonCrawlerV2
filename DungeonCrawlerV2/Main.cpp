@@ -46,7 +46,7 @@ int main() {
 		level.DisplayMap(CurrentLevel);
 		Help();
 		//check tile for enemy or chest
-		TileCheck(&player);
+		TileCheck(&player, &Items);
 		//sleep
 		Sleep(100);
 		//gets input

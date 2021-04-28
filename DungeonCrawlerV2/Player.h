@@ -11,7 +11,7 @@ private:
 	int Level;
 	std::vector<Item> Inventory;
 	int carrying_capacity = 20;
-
+	int floorNum = 1;
 	
 	int WeaponSlot = -1;
 	int ArmorSlot = -1;
@@ -36,6 +36,9 @@ public:
 
 	void SetCarryingCapacity(int carrycapacity);
 	int GetCarryingCapacity();
+
+	void SetFloorNum(int floornum);
+	int GetFloorNum();
 
 	void SetInventory(std::vector<Item> inventory);
 	std::vector<Item> GetInventory();

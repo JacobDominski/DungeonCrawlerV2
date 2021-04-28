@@ -7,3 +7,5 @@ void Sleep(int milliseconds);
 void Help();
 
 void ClearScreen();
+
+int GetRandom(int min, int max);
