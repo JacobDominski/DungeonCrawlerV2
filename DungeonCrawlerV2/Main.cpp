@@ -69,7 +69,6 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level, Player* player) {
 	//if a character is given and 224 is for the arrow keys
 	if (ch && ch != 224) {
 		//if a slash is pressed type command
-		//TODO: implement if for command
 		if (ch == 47) {
 			std::cout << '/';
 			std::getline(std::cin, answer);

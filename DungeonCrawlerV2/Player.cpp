@@ -284,6 +284,7 @@ void Player::SetWeapon(int id)
 			//switches item
 			//take away all modifiers from previous item
 			//call the dequip function
+			//DequipItem()
 			WeaponSlot = id;
 			//add all modifiers to the weapon
 		}
@@ -341,6 +342,7 @@ void Player::SetArmor(int id)
 			//switches item
 			//take away all modifiers from previous item
 			//call the dequip function
+			
 			ArmorSlot = id;
 			//add all modifiers to the weapon
 
