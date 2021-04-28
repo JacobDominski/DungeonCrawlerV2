@@ -59,6 +59,6 @@ struct Item
 
 
 std::vector<Item> CreateItems();
-void Store(std::vector<Item>& list);
+void DisplayItems(std::vector<Item>& list);
 int SearchItem(std::vector<Item> StoreItem, std::string ItemName);
 void ShowItem(Item& inventoryItem);

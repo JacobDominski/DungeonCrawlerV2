@@ -3,6 +3,7 @@
 /*
 List of commands
 /help - shows list of all commands
+/info - gives information on how to play the game
 /stats - shows player stats
 /inventory - shows player their inventory
 /drop - deletes item from inventory
@@ -21,12 +22,15 @@ void Commands(std::string command, Player* player)
 	if (command == "/help") {
 		std::cout << "\nthese are all of the commands you can do\n";
 		std::cout << "/help  | /inventory          | /equip (item name)\n";
-		std::cout << "/stats | /drop (item name)   | /dequip (item name)\n";
+		std::cout << "/info  | /drop (item name)   | /dequip (item name)\n";
 		std::cout << "/quit  | /item (item name)   | /equipped\n";
-		std::cout << "/save  |  ";
+		std::cout << "/save  | /stats";
 	}
 	else if (command == "/stats") {
 		player->PlayerStats();
+	}
+	else if (command == "/info") {
+		Info();
 	}
 	else if (command == "/inventory") {
 		player->DisplayInventory();
@@ -197,5 +201,12 @@ void Equipped(Player* player)
 void Save(Player* player)
 {
 
+}
+
+void Info()
+{
+	std::cout << "\nInfo";
+
+	pause("Press any key to continue . . . ");
 }
 

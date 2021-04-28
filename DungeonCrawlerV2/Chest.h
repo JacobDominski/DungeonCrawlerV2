@@ -1,7 +1,5 @@
 #pragma once
-class Chest
-{
+#include "Item.h"
+#include "Player.h"
 
-
-};
-
+void TileCheck(Player* player);

@@ -3,6 +3,8 @@
 #include "Item.h"
 #include "Player.h"
 #include "Commands.h"
+#include "Chest.h"
+#include "Store.h"
 
 #define KEY_UP    72
 #define KEY_LEFT  75
@@ -34,16 +36,20 @@ int main() {
 
 	//calls the start method to move the character to the starting position
 	level.Start(&CurrentLevel);
+
+	//ask if the player wants to but anything.
+	Store(&player, &Items);
 	
 	//game loop
     while (GameRunning) {
 		//clears screen to repeat
 		ClearScreen();
-		//check tile for enemy or chest
 
 		//displays the map
 		level.DisplayMap(CurrentLevel);
 		Help();
+		//check tile for enemy or chest
+		TileCheck(&player);
 		//sleep
 		Sleep(100);
 		//gets input
@@ -104,4 +110,3 @@ void Input(Level* lvl, std::vector<std::vector<char>>* level, Player* player) {
 	}
 	
 }
-

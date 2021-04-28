@@ -3,7 +3,7 @@
 
 
 //this function displays all of the items in the game
-void Store(std::vector<Item>& list)
+void DisplayItems(std::vector<Item>& list)
 {
 	std::cout << "\n\n";
 	int id = 0;//this stores the id of each item

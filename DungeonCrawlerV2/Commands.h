@@ -40,3 +40,6 @@ void Equipped(Player* player);
 
 //saves player progress
 void Save(Player* player);
+
+//displays information about the game to the user
+void Info();
