@@ -205,8 +205,33 @@ void Save(Player* player)
 
 void Info()
 {
-	std::cout << "\nInfo";
+	std::cout << "\nHello! This is a game where you fight";
+	std::cout << "\nyour way out of the dungeon and go on";
+	std::cout << "\nan adventure. - Page 1";
+	pause("\nPress any key to continue . . . ");
+	std::cout << "\nHere is a description of the different";
+	std::cout << "\ncommands available";
+	std::cout << "\n1. /stats - this will display your player's stats";
+	std::cout << "\n2. /inventory - this will display your player's inventory";
+	std::cout << "\n3. /drop - this will let you delete an";
+	std::cout << "\n           item from your inventory - page 2";
+	pause("\nPress any key to continue . . . ");
+	std::cout << "\n4. /item - this will display an item from";
+	std::cout << "\n		   your inventory along with all ";
+	std::cout << "\n		   it's properties. ";
+	std::cout << "\n5. /equip - this will let you equip an item";
+	std::cout << "\n		    to be used to fight against enemies";
+	std::cout << "\n		    - page 3";
+	pause("\nPress any key to continue . . . ");
+	std::cout << "\n6. /dequip - this will let you dequip an item";
+	std::cout << "\n             from your character to swap with";
+	std::cout << "\n             another item";
+	std::cout << "\n7. /equipped - this will show all the eqiupped";
+	std::cout << "\n               items you have - page 4";
+	pause("\nPress any key to continue . . . ");
+	std::cout << "\n8. /save - will save your progress";
+	std::cout << "\n9. /quit - will exit your game. Make";
+	std::cout << "\n           sure you save first! - page 5";
 
-	pause("Press any key to continue . . . ");
 }
 

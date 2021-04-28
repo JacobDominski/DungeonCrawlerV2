@@ -12,10 +12,7 @@
 #define KEY_DOWN  80
 
 //function prototypes
-void ClearScreen();
-void Help();
 void Input(Level* lvl, std::vector<std::vector<char>>* level, Player* player);
-void Sleep(int milliseconds);
 
 //main function
 int main() {
@@ -54,9 +51,6 @@ int main() {
 		Sleep(100);
 		//gets input
 		Input(&level, &CurrentLevel, &player);
-		
-		
-
 
 	}
 
