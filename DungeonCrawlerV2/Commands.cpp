@@ -90,6 +90,22 @@ void DropItem(std::string* command, Player* player) {
 	else if (id >= 0) {
 		//check if item is in use in a slot and delete it
 		//call the dequip function
+		if (player->GetInventory().at(id).name == player->GetWeapon().name ||
+			player->GetInventory().at(id).name == player->GetArmor().name ||
+			player->GetInventory().at(id).name == player->GetRingOne().name ||
+			player->GetInventory().at(id).name == player->GetRingTwo().name ) 
+		{
+			std::cout << "\nYou cannot drop this item as it is currently equipped. Dequip the item first to drop it.";
+			return;
+		}
+		else if (player->GetInventory().at(id).property == "Bag") {
+			//check if there is not enough space
+			if (player->GetCarryingCapacity() - player->GetInventory().at(id).effect < 0) {
+				//does not let you drop the bag
+				std::cout << "\nYou cannot drop this item as there would not be enough space left over for other items";
+				return;
+			}
+		}
 		player->SetCarryingCapacity(player->GetCarryingCapacity() + player->GetInventory()[id].weight);
 		player->DeleteItem(&player->GetInventory()[id]);
 		std::cout << "Item Dropped. You cannot get this back.\n";
