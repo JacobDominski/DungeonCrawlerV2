@@ -253,23 +253,19 @@ void Player::SetWeapon(int id)
 
 	//store user input
 	int choice = 0;
-
-	//check if item to equip is valid
-	if (Inventory[id].type != Weapon) {
-		//not a weapon
-		return;
-	}
-
-
 	//check if the slot is empty
 	if (id < 0) {
 		//empty
 		//set weapon name to slot
 		WeaponSlot = id;
-		//add all the modifiers for the weapon
 
 	}
 	else {
+		//check if item to equip is valid
+		if (Inventory[id].type != Weapon) {
+			//not a weapon
+			return;
+		}
 		//if not, say it's already taken
 		std::cout << "It looks like you are already holding a weapon!\nWould you like to replace it?";
 		//would you like to replace?
@@ -282,9 +278,7 @@ void Player::SetWeapon(int id)
 		//if the user chose Y
 		if (choice == 89 || choice == 121) {
 			//switches item
-			//take away all modifiers from previous item
-			//call the dequip function
-			//DequipItem()
+
 			WeaponSlot = id;
 			//add all modifiers to the weapon
 		}
@@ -313,21 +307,21 @@ void Player::SetArmor(int id)
 {
 	int choice = 0;
 
-	//check if item to equip is valid
-	if (Inventory[id].type != Armor) {
-		//not an armor
-		return;
-	}
+	
 
 	//check if the slot is empty
 	if (id < 0) {
 		//empty
 		//set weapon name to slot
 		ArmorSlot = id;
-		//add all the modifiers for the weapon
 
 	}
 	else {
+		//check if item to equip is valid
+		if (Inventory[id].type != Armor) {
+			//not an armor
+			return;
+		}
 		//if not, say it's already taken
 		std::cout << "It looks like you are already wearing armor!\nWould you like to replace it?";
 		//would you like to replace?
@@ -340,11 +334,11 @@ void Player::SetArmor(int id)
 		//if the user chose Y
 		if (choice == 89 || choice == 121) {
 			//switches item
-			//take away all modifiers from previous item
-			//call the dequip function
 			
+			
+
 			ArmorSlot = id;
-			//add all modifiers to the weapon
+			//add all modifiers to the armor
 
 		}
 		//if the user chose N
@@ -370,21 +364,21 @@ void Player::SetRingOne(int id)
 {
 	int choice = 0;
 
-	//check if item to equip is valid
-	if (Inventory[id].type != Ring) {
-		//not an armor
-		return;
-	}
+	
 
 	//check if the slot is empty
 	if (id < 0) {
 		//empty
 		//set weapon name to slot
 		RingOneSlot = id;
-		//add all the modifiers for the weapon
 
 	}
 	else {
+		//check if item to equip is valid
+		if (Inventory[id].type != Ring) {
+			//not an armor
+			return;
+		}
 		//if not, say it's already taken
 		std::cout << "It looks like you are already wearing a ring in your first slot!\nWould you like to replace it?";
 		//would you like to replace?
@@ -397,8 +391,7 @@ void Player::SetRingOne(int id)
 		//if the user chose Y
 		if (choice == 89 || choice == 121) {
 			//switches item
-			//take away all modifiers from previous item
-			//call the dequip function
+
 			RingOneSlot = id;
 			//add all modifiers to the weapon
 		}
@@ -425,21 +418,21 @@ void Player::SetRingTwo(int id)
 {
 	int choice = 0;
 
-	//check if item to equip is valid
-	if (Inventory[id].type != Ring) {
-		//not an armor
-		return;
-	}
+	
 
 	//check if the slot is empty
 	if (id < 0) {
 		//empty
 		//set weapon name to slot
 		RingTwoSlot = id;
-		//add all the modifiers for the weapon
 
 	}
 	else {
+		//check if item to equip is valid
+		if (Inventory[id].type != Ring) {
+			//not an armor
+			return;
+		}
 		//if not, say it's already taken
 		std::cout << "It looks like you are already wearing a ring in your second slot!\nWould you like to replace it?";
 		//would you like to replace?
@@ -452,8 +445,7 @@ void Player::SetRingTwo(int id)
 		//if the user chose Y
 		if (choice == 89 || choice == 121) {
 			//switches item
-			//take away all modifiers from previous item
-			//call the dequip function
+
 			RingTwoSlot = id;
 			//add all modifiers to the weapon
 		}

@@ -129,19 +129,35 @@ void DisplayItem(std::string* command, Player* player)
 void EquipItem(std::string* command, Player* player)
 {
 	int id = GetItem(command, player, 7);
+	int prevItem;
 
 	if (id == -1) {
 		std::cout << "\nCould not find the item you wanted. Try double checking if the name is spelled correctly\n";
 	}
 	else if (id >= 0) {
 		//if item is weapon
-		if (player->GetInventory()[id].type == Weapon) {
+		if (player->GetInventory().at(id).type == Weapon) {
+			//prevItem = player->SearchPlayerItem(player->GetWeapon().name);
 			player->SetWeapon(id);
 		}
-		else if (player->GetInventory()[id].type == Armor) {
+		else if (player->GetInventory().at(id).type == Armor) {
+			prevItem = player->SearchPlayerItem(player->GetArmor().name);
 			player->SetArmor(id);
+			//the item did change
+			if (prevItem != player->GetArmor().id) {
+				if (prevItem >= 0) {
+					player->SetAC(player->GetAC() - player->GetInventory().at(prevItem).effect);
+					player->SetAC(player->GetAC() + player->GetInventory().at(id).effect);
+				}
+				else {
+					player->SetAC(player->GetAC() + player->GetInventory().at(id).effect);
+				}
+				
+			}
+
+			
 		}
-		else if (player->GetInventory()[id].type == Ring) {
+		else if (player->GetInventory().at(id).type == Ring) {
 			//Ask which slot 1 or 2
 			int choice = 0;
 			std::cout << "Which slot would you like to equip your ring?\n1 or 2 : ";
@@ -151,7 +167,18 @@ void EquipItem(std::string* command, Player* player)
 
 			if (choice == 49) {
 				//slot 1
+				prevItem = player->SearchPlayerItem(player->GetRingOne().name);
 				player->SetRingOne(id);
+				if (prevItem != player->GetRingOne().id) {
+					if (prevItem >= 0) {
+						//player->SetAC(player->GetAC() - player->GetInventory().at(prevItem).effect);
+						//player->SetAC(player->GetAC() + player->GetInventory().at(id).effect);
+					}
+					else {
+						//player->SetAC(player->GetAC() + player->GetInventory().at(id).effect);
+					}
+
+				}
 			}
 			else if (choice == 50) {
 				//slot 2
@@ -180,6 +207,7 @@ void DequipItem(std::string* command, Player* player)
 		else if (player->GetInventory()[id].type == Armor) {
 			//reset modifiers
 			player->SetArmor(-1);
+			player->SetAC(player->GetAC() - player->GetInventory().at(id).effect);
 		}
 		else if (player->GetInventory()[id].type == Ring) {
 			//Ask which slot 1 or 2

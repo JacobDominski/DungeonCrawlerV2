@@ -115,15 +115,15 @@ std::vector<Item> CreateItems()
 	Item GreatAxe(9, "Greataxe", Weapon, "The largest member of axes. It requires two hands to wield.", 30, 25, "TwoHanded", 4, 12);
 	Item GreatSword(10, "Greatsword", Weapon, "The largest member of swords. It requires two hands to wield.", 50, 20, "TwoHanded", 4, 12);
 	//armor
-	Item LeatherArmor(11, "Leather Armor", Armor, "Armor made from stiff leather", 10, 10, "Light", 1, 11);
-	Item PaddedArmor(12, "Padded Armor", Armor, "Armor made from regular clothes padded together", 5, 10, "Light", 1, 11);
-	Item StuddedArmor(13, "Studded Leather Armor", Armor, "Armor made from stiff leather but reinforced with rivets", 45, 15, "Light", 1, 12);
-	Item ChainShirt(14, "Chain Shirt", Armor, "made of small interlocking metal rings, the chain shirt gives decent protection", 50, 20, "Medium", 2, 13);
-	Item Breastplate(15, "Breastplate", Armor, "made of fitted metal with leather, it leaves the arms and legs unprotected but good protection around the vital organs", 100, 25, "Medium", 2, 14);
+	Item LeatherArmor(11, "Leather Armor", Armor, "Armor made from stiff leather", 10, 10, "Light", 1, 1);
+	Item PaddedArmor(12, "Padded Armor", Armor, "Armor made from regular clothes padded together", 5, 10, "Light", 1, 1);
+	Item StuddedArmor(13, "Studded Leather Armor", Armor, "Armor made from stiff leather but reinforced with rivets", 45, 15, "Light", 1, 2);
+	Item ChainShirt(14, "Chain Shirt", Armor, "made of small interlocking metal rings, the chain shirt gives decent protection", 50, 20, "Medium", 2, 3);
+	Item Breastplate(15, "Breastplate", Armor, "made of fitted metal with leather, it leaves the arms and legs unprotected but good protection around the vital organs", 100, 25, "Medium", 2, 4);
 	Item HalfPlate(16, "Half Plate", Armor, "consists of shaped metal plates the cover most of the wearer's body", 150, 40, "Medium", 2, 15);
-	Item ChainMail(17, "Chain Mail", Armor, "Made of interlocking rings and includes a layer of quilted fabric to prevent chafing", 75, 55, "Heavy", 3, 16);
-	Item Splint(18, "Splint", Armor, "Armor made from vertical strips of metal with flexible chain mail to protect the joints", 200, 60, "Heavy", 3, 17);
-	Item Plate(19, "Plate", Armor, "Armor made from interlocking metal that covers the entire body", 10, 10, "Heavy", 4, 18);
+	Item ChainMail(17, "Chain Mail", Armor, "Made of interlocking rings and includes a layer of quilted fabric to prevent chafing", 75, 55, "Heavy", 3, 6);
+	Item Splint(18, "Splint", Armor, "Armor made from vertical strips of metal with flexible chain mail to protect the joints", 200, 60, "Heavy", 3, 7);
+	Item Plate(19, "Plate", Armor, "Armor made from interlocking metal that covers the entire body", 10, 10, "Heavy", 4, 8);
 	Item Shield(20, "Shield", Armor, "it's a shield", 10, 10, "Light", 2, 2);
 	//potions 
 	Item SmallHealthPotion(21, "Small Health Potion", Potion, "S small potion that restores some HP", 10, 2, "Health", 1, 5);
