@@ -17,6 +17,7 @@ Player::Player()
 	SetChaMod(Charisma);
 
 	Health = 10 + ConMod;
+	MaxHealth = 10 + ConMod;
 	ac = 10 + DexMod;
 
 	SetMoney(RollDice(5, 4, 0, false));
@@ -239,7 +240,7 @@ void Player::PlayerStats()
 	std::cout << "\nIntelligence: " << Intelligence << " | IntMod: " << IntMod;
 	std::cout << "\nWisdom:       " << Wisdom << " | WisMod: " << WisMod;
 	std::cout << "\nCharisma:     " << Charisma << " | ChaMod: " << ChaMod;
-	std::cout << "\nPlayer Health: " << Health;
+	std::cout << "\nPlayer Health: " << Health << "/" << MaxHealth;
 	std::cout << "\nArmor Class: " << ac;
 	std::cout << "\nPlayer Money: $" << Money;
 	std::cout << "\nPlayer Carrying Capacity: " << carrying_capacity;

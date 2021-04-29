@@ -34,6 +34,14 @@ int Character::GetHealth()
 {
 	return Health;
 }
+void Character::SetMaxHealth(int health)
+{
+	MaxHealth = health;
+}
+int Character::GetMaxHealth()
+{
+	return MaxHealth;
+}
 //sets the level of the character
 void Character::SetCharacterLevel(int level)
 {

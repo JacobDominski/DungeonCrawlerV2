@@ -30,6 +30,7 @@ protected:
 
 	//health
 	int Health = 10;
+	int MaxHealth;
 
 	//character level
 	int CharacterLevel = 1;
@@ -71,6 +72,9 @@ public:
 	//sets the health
 	void SetHealth(int health);
 	int GetHealth();
+	//sets the maximum health
+	void SetMaxHealth(int health);
+	int GetMaxHealth();
 	//sets the level
 	void SetCharacterLevel(int level);
 	int GetCharacterLevel();
